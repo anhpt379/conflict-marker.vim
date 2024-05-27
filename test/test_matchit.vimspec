@@ -35,10 +35,10 @@ Describe matchit
 
     It defines b:match_words
         Assert Exists('b:match_words')
-        Assert Match(b:match_words, ',^<<<<<<<:^|||||||:^=======$:^>>>>>>>')
+        Assert Equals(b:match_words, '^<<<<<<<\+:^|||||||\+:^=======\+$:^>>>>>>>\+')
     End
 
-    It can jump within a conflict marker
+    It jumps jumps between delimiters in a conflict marker
         normal! gg
         normal %
         Assert Equals(line('.'), 3)
@@ -64,7 +64,7 @@ Describe matchit with diff3
         close!
     End
 
-    It can jump within a conflict marker
+    It jumps between delimiters in a conflict marker
         normal! gg
         normal %
         Assert Equals(line('.'), 3)
